@@ -1235,7 +1235,6 @@ const App: React.FC = () => {
   const [missingFields, setMissingFields] = useState<string[]>([]);
   const [currentPhase, setCurrentPhase] = useState<SessionPhase>('idle');
   const [currentFormData, setCurrentFormData] = useState<FormData | undefined>();
-  const [uploadedImageUrl, setUploadedImageUrl] = useState<string | null>(null);
   const [compressionHistory, setCompressionHistory] = useState<CompressionRecord[]>([]);
   const [hasCompleteInfo, setHasCompleteInfo] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -1263,7 +1262,6 @@ const App: React.FC = () => {
 
   const handleImageUpload = (file: File) => {
     const imageUrl = URL.createObjectURL(file);
-    setUploadedImageUrl(imageUrl);
     setMessages(prev => [...prev, { id: generateId(), type: 'user', image: imageUrl, timestamp: new Date() }]);
     setCurrentPhase('intent_analysis');
     setTimeout(() => {
